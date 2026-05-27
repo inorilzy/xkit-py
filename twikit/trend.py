@@ -23,13 +23,20 @@ class Trend:
     def __init__(self, client: Client, data: dict) -> None:
         self._client = client
 
-        metadata: dict = data['trendMetadata']
+        # Twitter switched from camelCase to snake_case for the trend payload
+        # at some point. Accept both for forward/backward compatibility.
+        metadata: dict = data.get('trend_metadata') or data.get('trendMetadata') or {}
         self.name: str = data['name']
-        self.tweets_count: int | None = metadata.get('metaDescription')
-        self.domain_context: str = metadata.get('domainContext')
-        self.grouped_trends: list[str] = [
-            trend['name'] for trend in data.get('groupedTrends', [])
-        ]
+        self.tweets_count = (
+            metadata.get('meta_description')
+            or metadata.get('metaDescription')
+        )
+        self.domain_context: str = (
+            metadata.get('domain_context')
+            or metadata.get('domainContext')
+        )
+        grouped = data.get('grouped_trends') or data.get('groupedTrends') or []
+        self.grouped_trends: list[str] = [trend['name'] for trend in grouped]
 
     def __repr__(self) -> str:
         return f'<Trend name="{self.name}">'

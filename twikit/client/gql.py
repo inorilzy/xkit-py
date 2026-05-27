@@ -16,7 +16,8 @@ from ..constants import (
     TWEET_RESULT_BY_REST_ID_FEATURES,
     TWEET_RESULTS_BY_REST_IDS_FEATURES,
     USER_FEATURES,
-    USER_HIGHLIGHTS_TWEETS_FEATURES
+    USER_HIGHLIGHTS_TWEETS_FEATURES,
+    GENERIC_TIMELINE_FEATURES,
 )
 from ..utils import flatten_params, get_query_id
 
@@ -72,6 +73,8 @@ class Endpoint:
     BLUE_VERIFIED_FOLLOWERS = url('VmIlPJNEDVQ29HfzIhV4mw/BlueVerifiedFollowers')
     FOLLOWERS_YOU_KNOW = url('f2tbuGNjfOE8mNUO5itMew/FollowersYouKnow')
     FOLLOWING = url('2vUj-_Ek-UmBVDNtd8OnQA/Following')
+    EXPLORE_PAGE = url('Lr7rbLxwMLDrWFJrlCdRVw/ExplorePage')
+    GENERIC_TIMELINE_BY_ID = url('J5pGd3g_8gGG28OGzHci8g/GenericTimelineById')
     USER_CREATOR_SUBSCRIPTIONS = url('Wsm5ZTCYtg2eH7mXAXPIgw/UserCreatorSubscriptions')
     USER_DM_REACTION_MUTATION_ADD_MUTATION = url('VyDyV9pC2oZEj6g52hgnhA/useDMReactionMutationAddMutation')
     USER_DM_REACTION_MUTATION_REMOVE_MUTATION = url('bV_Nim3RYHsaJwMkTXJ6ew/useDMReactionMutationRemoveMutation')
@@ -304,6 +307,14 @@ class GQLClient:
 
     async def favoriters(self, tweet_id, count, cursor):
         return await self.tweet_engagements(tweet_id, count, cursor, Endpoint.FAVORITERS)
+
+    async def explore_page(self):
+        variables = {'cursor': ''}
+        return await self.gql_get(Endpoint.EXPLORE_PAGE, variables, GENERIC_TIMELINE_FEATURES)
+
+    async def generic_timeline_by_id(self, timeline_id, count):
+        variables = {'timelineId': timeline_id, 'count': count}
+        return await self.gql_get(Endpoint.GENERIC_TIMELINE_BY_ID, variables, GENERIC_TIMELINE_FEATURES)
 
     async def bird_watch_one_note(self, note_id):
         variables = {'note_id': note_id}

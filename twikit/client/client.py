@@ -18,7 +18,7 @@ from httpx._utils import URLPattern
 from .._captcha import Capsolver
 from ..bookmark import BookmarkFolder
 from ..community import Community, CommunityMember
-from ..constants import TOKEN, DOMAIN
+from ..constants import TOKEN, DOMAIN, TIMELINE_IDS
 from ..errors import (
     AccountLocked,
     AccountSuspended,
@@ -310,7 +310,8 @@ class Client:
         password: str,
         totp_secret: str | None = None,
         cookies_file: str | None = None,
-        enable_ui_metrics: bool = True
+        enable_ui_metrics: bool = True,
+        input_for_login: bool = True
     ) -> dict:
         """
         Logs into the account using the specified login information.
@@ -468,16 +469,18 @@ class Client:
             raise TwitterException(flow.response['subtasks'][0]['cta']['secondary_text']['text'])
 
         if flow.task_id == 'LoginAcid':
-            print(find_dict(flow.response, 'secondary_text', find_one=True)[0]['text'])
+            if input_for_login:
+                print(find_dict(flow.response, 'secondary_text', find_one=True)[0]['text'])
+                await flow.execute_task({
+                    'subtask_id': 'LoginAcid',
+                    'enter_text': {
+                        'text': input('>>> '),
+                        'link': 'next_link'
+                    }
+                })
+                return flow.response
 
-            await flow.execute_task({
-                'subtask_id': 'LoginAcid',
-                'enter_text': {
-                    'text': input('>>> '),
-                    'link': 'next_link'
-                }
-            })
-            return flow.response
+            raise TwitterException(flow.response['subtasks'][0]['cta']['secondary_text']['text'])
 
         if flow.task_id == 'LoginTwoFactorAuthChallenge':
             if totp_secret is None:
@@ -804,6 +807,34 @@ class Client:
             partial(self.search_tweet, query, product, count, previous_cursor),
             previous_cursor
         )
+
+    async def get_user_mentions(
+        self,
+        handle: str,
+        search_count: int = 20
+    ) -> list[Tweet]:
+        """
+        Fetches tweets mentioning a given user handle via search.
+
+        Parameters
+        ----------
+        handle : :class:`str`
+            The target user handle (without the leading @).
+        search_count : :class:`int`, default=20
+            The number of latest tweets to retrieve in each request.
+
+        Returns
+        -------
+        list[:class:`Tweet`]
+            Tweets that mention the handle, sorted by tweet id ascending.
+        """
+        result = await self.search_tweet(f"@{handle}", "Latest", count=search_count)
+        mentions = [
+            tweet for tweet in result
+            if f"@{handle.lower()}" in (tweet.full_text or tweet.text or "").strip().lower()
+        ]
+        mentions.sort(key=lambda x: int(x.id))
+        return mentions
 
     async def search_user(
         self,
@@ -2642,6 +2673,34 @@ class Client:
         ...
         """
         category = category.lower()
+
+        # New (post-2025) path: use the GenericTimelineById GQL endpoint.
+        # Falls back to the legacy v11.guide endpoint if the category is
+        # not in our TIMELINE_IDS map.
+        timeline_id = TIMELINE_IDS.get(category)
+        if timeline_id is not None:
+            response, _ = await self.gql.generic_timeline_by_id(timeline_id, count)
+            entries_blob = find_dict(response, 'entries', find_one=True)
+            if not entries_blob:
+                if retry:
+                    return await self.get_trends(category, count, False, additional_request_params)
+                return []
+            entries = [
+                i for i in entries_blob[0]
+                if i.get('entryId', '').startswith('trend')
+            ]
+            results = []
+            for entry in entries:
+                item_content = entry.get('content', {}).get('itemContent', {})
+                trend_info = item_content.get('trend')
+                if not trend_info:
+                    continue
+                results.append(Trend(self, trend_info))
+            if not results and retry:
+                return await self.get_trends(category, count, False, additional_request_params)
+            return results
+
+        # Legacy fallback path (kept for backward compatibility).
         if category in ['news', 'sports', 'entertainment']:
             category += '_unified'
         response, _ = await self.v11.guide(category, count, additional_request_params)
