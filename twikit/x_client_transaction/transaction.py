@@ -42,15 +42,31 @@ class ClientTransaction:
         self.home_page_response = None
 
     async def init(self, session, headers):
-        home_page_response = await handle_x_migration(session, headers)
+        # NOTE: wrap the body so that a partial init (e.g. ondemand.s
+        # download times out after home_page_response is stored but before
+        # self.key is set) tears down the half-initialised state.  Without
+        # this the *next* request raises "'ClientTransaction' has no attribute
+        # 'key'" instead of retrying init cleanly.
+        try:
+            home_page_response = await handle_x_migration(session, headers)
 
-        self.home_page_response = self.validate_response(home_page_response)
-        self.DEFAULT_ROW_INDEX, self.DEFAULT_KEY_BYTES_INDICES = await self.get_indices(
-            self.home_page_response, session, headers)
-        self.key = self.get_key(response=self.home_page_response)
-        self.key_bytes = self.get_key_bytes(key=self.key)
-        self.animation_key = self.get_animation_key(
-            key_bytes=self.key_bytes, response=self.home_page_response)
+            self.home_page_response = self.validate_response(home_page_response)
+            self.DEFAULT_ROW_INDEX, self.DEFAULT_KEY_BYTES_INDICES = await self.get_indices(
+                self.home_page_response, session, headers)
+            self.key = self.get_key(response=self.home_page_response)
+            self.key_bytes = self.get_key_bytes(key=self.key)
+            self.animation_key = self.get_animation_key(
+                key_bytes=self.key_bytes, response=self.home_page_response)
+        except Exception:
+            # Reset so the next caller retries init() from scratch.
+            self.home_page_response = None
+            for _attr in ('key', 'key_bytes', 'animation_key',
+                          'DEFAULT_ROW_INDEX', 'DEFAULT_KEY_BYTES_INDICES'):
+                try:
+                    delattr(self, _attr)
+                except AttributeError:
+                    pass
+            raise
 
     async def get_indices(self, home_page_response, session, headers):
         key_byte_indices = []
