@@ -123,6 +123,7 @@ class User:
         self.translator_type: str = legacy.get('translator_type', '')
         self.withheld_in_countries: list[str] = legacy.get('withheld_in_countries', [])
         self.protected: bool = legacy.get('protected', False)
+        self.notifications: bool = legacy.get('notifications', False)
 
     @property
     def created_at_datetime(self) -> datetime:
