@@ -27,7 +27,7 @@ ON_DEMAND_FILE_REGEX = re.compile(
     r"""[,{](\d+):["']ondemand\.s["']""", flags=(re.VERBOSE | re.MULTILINE))
 # `{{` / `}}` escape the literal braces so `str.format()` substitutes
 # only the `{chunk_id}` placeholder.
-ON_DEMAND_HASH_PATTERN = r'[,{{{chunk_id}}}]{{chunk_id}}:["\']([0-9a-f]+)["\']'
+ON_DEMAND_HASH_PATTERN = r'[,{{]{chunk_id}:["\']([0-9a-f]+)["\']'
 INDICES_REGEX = re.compile(
     r"""(\(\w{1}\[(\d{1,2})\],\s*16\))+""", flags=(re.VERBOSE | re.MULTILINE))
 
