@@ -1,6 +1,12 @@
 > [!NOTE]
 > https://github.com/d60/twitter_login (under development)
 
+> [!IMPORTANT]
+> This repository is a maintained fork of the upstream project.
+> Upstream: https://github.com/d60/twikit
+> Maintained fork: https://github.com/inorilzy/twikit
+> If you are looking for actively maintained fixes (for example X bundle format changes), use this fork.
+
 <img src="https://i.imgur.com/iJe6rsZ.png"  width="500">
 
 

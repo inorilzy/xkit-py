@@ -1,3 +1,9 @@
+> [!IMPORTANT]
+> このリポジトリは上流プロジェクトのメンテナンス fork（maintained fork）です。
+> Upstream: https://github.com/d60/twikit
+> Maintained fork: https://github.com/inorilzy/twikit
+> X の bundle 形式変更対応など、継続的な修正を利用したい場合はこの fork を使用してください。
+
 <img src="https://i.imgur.com/iJe6rsZ.png"  width="500">
 
 

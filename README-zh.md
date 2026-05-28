@@ -1,3 +1,9 @@
+> [!IMPORTANT]
+> 本仓库是上游项目的持续维护分叉（maintained fork）。
+> 上游仓库：https://github.com/d60/twikit
+> 维护分叉：https://github.com/inorilzy/twikit
+> 如果你希望使用包含最新修复（例如 X bundle 格式变更修复）的版本，请优先使用此分叉。
+
 <img src="https://i.imgur.com/iJe6rsZ.png"  width="500">
 
 
