@@ -1,30 +1,29 @@
 > [!IMPORTANT]
 > 本仓库是上游项目的持续维护分叉（maintained fork）。
 > 上游仓库：https://github.com/d60/twikit
-> 维护分叉：https://github.com/inorilzy/twikit
+> 维护分叉：https://github.com/inorilzy/twikit-ng
 > 如果你希望使用包含最新修复（例如 X bundle 格式变更修复）的版本，请优先使用此分叉。
 
 <img src="https://i.imgur.com/iJe6rsZ.png"  width="500">
 
 
 
-![Number of GitHub stars](https://img.shields.io/github/stars/d60/twikit)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/d60/twikit)
-![Version](https://img.shields.io/pypi/v/twikit?label=PyPI)
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Create%20your%20own%20Twitter%20bot%20for%20free%20with%20%22Twikit%22!%20%23python%20%23twitter%20%23twikit%20%23programming%20%23github%20%23bot&url=https%3A%2F%2Fgithub.com%2Fd60%2Ftwikit)
+![Number of GitHub stars](https://img.shields.io/github/stars/inorilzy/twikit-ng)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/inorilzy/twikit-ng)
+![Version](https://img.shields.io/pypi/v/twikit-ng?label=PyPI)
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Use%20%22Twikit-NG%22%2C%20a%20maintained%20Twikit%20fork%20for%20Twitter%2FX%20automation!%20%23python%20%23twitter%20%23twikit&url=https%3A%2F%2Fgithub.com%2Finorilzy%2Ftwikit-ng)
 [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/nCrByrr8cX)
-[![BuyMeACoffee](https://img.shields.io/badge/-buy_me_a%C2%A0coffee-gray?logo=buy-me-a-coffee)](https://www.buymeacoffee.com/d60py)
 
-[[English](https://github.com/d60/twikit/blob/main/README.md)]
-[[日本語](https://github.com/d60/twikit/blob/main/README-ja.md)]
+[[English](https://github.com/inorilzy/twikit-ng/blob/main/README.md)]
+[[日本語](https://github.com/inorilzy/twikit-ng/blob/main/README-ja.md)]
 
-# Twikit <img height="35"  src="https://i.imgur.com/9HSdIl4.png"  valign="bottom">
+# Twikit-NG <img height="35"  src="https://i.imgur.com/9HSdIl4.png"  valign="bottom">
 
 一个简单的爬取 Twitter API 的客户端。
 
 本库提供的函数允许你进行对推特的操作，如发布或搜索推文，并且无需开发者 API 密钥。
 
-- [文档（英文）](https://twikit.readthedocs.io/en/latest/twikit.html)
+- [上游文档（英文）](https://twikit.readthedocs.io/en/latest/twikit.html)
 
 [Discord 服务器](https://discord.gg/nCrByrr8cX)
 
@@ -59,8 +58,14 @@
 
 ```bash
 
-pip install twikit
+pip install twikit-ng
 
+```
+
+发布包名是 `twikit-ng`，Python import 路径保持与上游兼容：
+
+```python
+from twikit import Client
 ```
 
 
@@ -131,4 +136,4 @@ for tweet in tweets:
 await client.get_trends('trending')
 ```
 
-[更多样例...](https://github.com/d60/twikit/tree/main/examples)<br>
+[更多样例...](https://github.com/inorilzy/twikit-ng/tree/main/examples)<br>

@@ -52,7 +52,7 @@
  *   Old format: 'ondemand.s': 'hashvalue'
  *   New format: {chunkId: 'ondemand.s', ..., chunkId: 'hashvalue'}
  *   Fix: getOndemandUrl() does a two-step chunk-ID -> hash lookup.
- *   Status: fixed in inorilzy/twikit fork; PR #410/#411 pending in d60/twikit upstream.
+ *   Status: fixed in the inorilzy/twikit-ng maintained fork; PR #410/#411 pending in d60/twikit upstream.
  */
 
 'use strict';

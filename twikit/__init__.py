@@ -3,11 +3,11 @@
 Twikit Twitter API Wrapper
 ==========================
 
-https://github.com/d60/twikit
+https://github.com/inorilzy/twikit-ng
 A Python library for interacting with the Twitter API.
 """
 
-__version__ = '2.5.0'
+__version__ = '2.5.1'
 
 import asyncio
 import os

@@ -10,7 +10,7 @@ with open('./twikit/__init__.py') as f:
 
 
 setup(
-    name='twikit',
+    name='twikit-ng',
     version=version,
     install_requires=[
         'httpx[socks]',
@@ -23,10 +23,15 @@ setup(
         'Js2Py-3.13'
     ],
     python_requires='>=3.8',
-    description='Twitter API wrapper for python with **no API key required**.',
+    description='Maintained fork of Twikit, a Twitter/X API wrapper for Python with no API key required.',
     long_description=long_description,
     long_description_content_type='text/markdown',
     license='MIT',
-    url='https://github.com/d60/twikit',
+    url='https://github.com/inorilzy/twikit-ng',
+    project_urls={
+        'Source': 'https://github.com/inorilzy/twikit-ng',
+        'Issues': 'https://github.com/inorilzy/twikit-ng/issues',
+        'Upstream': 'https://github.com/d60/twikit',
+    },
     package_data={'twikit': ['py.typed']}
 )
