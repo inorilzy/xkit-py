@@ -1,33 +1,15 @@
-> [!IMPORTANT]
-> XKit for Python 源自上游 Twikit 项目，现在作为独立项目维护。
-> 上游仓库：https://github.com/d60/twikit
-> 当前项目：https://github.com/inorilzy/xkit-py
-> 如果你希望使用包含最新修复（例如 X bundle 格式变更修复）的版本，请优先使用 XKit for Python。
-
-<img src="https://i.imgur.com/iJe6rsZ.png"  width="500">
-
-
+# XKit for Python
 
 ![Number of GitHub stars](https://img.shields.io/github/stars/inorilzy/xkit-py)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/inorilzy/xkit-py)
 ![Version](https://img.shields.io/pypi/v/xkit-py?label=PyPI)
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Use%20%22XKit%20for%20Python%22%2C%20a%20maintained%20Twitter%2FX%20web%20API%20client%20for%20Python!%20%23python%20%23twitter%20%23xkit&url=https%3A%2F%2Fgithub.com%2Finorilzy%2Fxkit-py)
-[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/nCrByrr8cX)
 
-[[English](https://github.com/inorilzy/xkit-py/blob/main/README.md)]
-[[日本語](https://github.com/inorilzy/xkit-py/blob/main/README-ja.md)]
+[[English](README.md)]
+[[日本語](README-ja.md)]
 
-# XKit for Python <img height="35"  src="https://i.imgur.com/9HSdIl4.png"  valign="bottom">
+一个持续维护的 Twitter/X Web API Python 客户端。
 
-一个简单的爬取 Twitter API 的客户端。
-
-本库提供的函数允许你进行对推特的操作，如发布或搜索推文，并且无需开发者 API 密钥。
-
-- [上游文档（英文）](https://twikit.readthedocs.io/en/latest/twikit.html)
-
-[Discord 服务器](https://discord.gg/nCrByrr8cX)
-
-
+本库提供的函数允许你进行对 Twitter/X 的操作，如发布或搜索推文，并且无需开发者 API 密钥。
 
 ## 特性
 
@@ -42,7 +24,7 @@
 
 ## 功能
 
-使用 Twikit，你可以：
+使用 XKit for Python，你可以：
 
 -  创建推文
 
@@ -141,4 +123,4 @@ for tweet in tweets:
 await client.get_trends('trending')
 ```
 
-[更多样例...](https://github.com/inorilzy/xkit-py/tree/main/examples)<br>
+[更多样例...](examples)<br>

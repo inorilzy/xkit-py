@@ -1,11 +1,11 @@
-Welcome to twikit's documentation!
-==================================
+XKit for Python Documentation
+=============================
 
 .. toctree::
    :maxdepth: 1
    :caption: Contents:
 
-   twikit
+   xkit
 
 
 Indices and tables

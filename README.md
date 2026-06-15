@@ -132,18 +132,14 @@ asyncio.run(main())
 
 本项目使用 Twitter/X Web 端点。过高频率请求、异常自动化行为、账号环境不稳定等情况，都可能触发限流、验证、临时锁定或账号风险。
 
-自动化使用前建议阅读 [ToProtectYourAccount.md](https://github.com/inorilzy/xkit-py/blob/main/ToProtectYourAccount.md)。
+自动化使用前建议阅读 [ToProtectYourAccount.md](ToProtectYourAccount.md)。
 
 ## 文档
 
-继承的 API 表面仍可参考上游文档：
-
-- [Upstream Twikit documentation](https://twikit.readthedocs.io/en/latest/twikit.html)
-
 XKit for Python 维护说明：
 
-- [MAINTENANCE_NOTES.md](https://github.com/inorilzy/xkit-py/blob/main/MAINTENANCE_NOTES.md)
-- [X_TID_SOP.md](https://github.com/inorilzy/xkit-py/blob/main/X_TID_SOP.md)
+- [MAINTENANCE_NOTES.md](MAINTENANCE_NOTES.md)
+- [X_TID_SOP.md](X_TID_SOP.md)
 
 ## 兼容性
 
@@ -165,7 +161,7 @@ from twikit import Client
 
 XKit for Python derived from [d60/twikit](https://github.com/d60/twikit), originally licensed under the MIT License.
 
-The original copyright notice and MIT License are preserved in [LICENSE](https://github.com/inorilzy/xkit-py/blob/main/LICENSE).
+The original copyright notice required by the MIT License is preserved in [LICENSE](LICENSE).
 
 ## 贡献
 

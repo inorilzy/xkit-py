@@ -1,6 +1,6 @@
 # x_tid_generator.js — JavaScript Reference Implementation
 
-A standalone Node.js port of `twikit/x_client_transaction/transaction.py`.
+A standalone Node.js reference implementation aligned with the Python transaction implementation.
 
 Generates the `x-client-transaction-id` header required by X (Twitter) private APIs.
 
@@ -43,6 +43,6 @@ construction.
 
 ## Status
 
-- Tracks `twikit` Python implementation
+- Tracks the Python transaction implementation used by XKit for Python
 - Verified against live `x.com` (version byte `0x03`, timestamp ±0s)
 - Implements the March 2026 webpack bundle format fix (issues #408/#409)

@@ -1,6 +1,6 @@
 ﻿/**
  * X (Twitter) x-client-transaction-id Generator
- * Reverse engineered from webpack module 208932 + twikit x_client_transaction
+ * Reverse engineered from webpack module 208932 and the Python transaction implementation.
  *
  * Algorithm summary:
  *   TID = 70 bytes, base64-encoded (no padding)
@@ -28,7 +28,7 @@
  *   DEFAULT_KEYWORD = "obfiowerehiring"
  *   VERSION_BYTE = 0x03
  *
- * animationKey computation pipeline (ported from twikit):
+ * animationKey computation pipeline:
  *   1. Parse twitter-site-verification meta -> 48-byte keyBytes (base64-decoded)
  *   2. Fetch ondemand.s.{hash}a.js bundle, extract key byte indices
  *      via regex /\(\w{1}\[(\d{1,2})\],\s*16\)/g -> [rowIndex, ...keyBytesIndices]
@@ -47,12 +47,12 @@
  *   - Bug 2: SHA input used hardcoded nonce suffix instead of computed animationKey.
  *            Fix: compute animationKey dynamically from SVG frames + key bytes + indices.
  *
- * twikit Issue #408/#409 (March 2026 bundle format change):
+ * March 2026 bundle format change:
  *   X changed webpack bundle so ON_DEMAND_FILE_REGEX no longer matched.
  *   Old format: 'ondemand.s': 'hashvalue'
  *   New format: {chunkId: 'ondemand.s', ..., chunkId: 'hashvalue'}
  *   Fix: getOndemandUrl() does a two-step chunk-ID -> hash lookup.
- *   Status: fixed in X-Kit; PR #410/#411 pending in d60/twikit upstream.
+ *   Status: fixed in XKit for Python.
  */
 
 'use strict';
@@ -65,12 +65,12 @@ const VERSION_BYTE = 0x03;
 
 
 // =============================================================================
-// 1  MATH UTILITIES  (ported from twikit cubic_curve.py / interpolate.py /
+// 1  MATH UTILITIES  (ported from the Python cubic_curve.py / interpolate.py /
 //                     rotation.py / utils.py)
 // =============================================================================
 
 /**
- * Custom float -> hex string used by twikit animation_key assembly.
+ * Custom float -> hex string used by the Python animation_key assembly.
  * e.g. floatToHex(1.0) -> '1',  floatToHex(0.5) -> '.8',  floatToHex(0.0) -> ''
  * @param {number} x  non-negative float
  * @returns {string}
@@ -241,7 +241,7 @@ function get2dArray(frameD) {
 
 /**
  * Compute the animation key string.
- * Matches twikit ClientTransaction.get_animation_key().
+ * Matches ClientTransaction.get_animation_key().
  *
  * @param {number[]} keyBytes          48-byte array (base64-decoded meta)
  * @param {string[]} svgFrameDs        4-element array of "d" attribute strings
@@ -312,10 +312,10 @@ function parseSvgFrames(htmlText) {
 
 /**
  * Parse KEY_BYTE indices from the ondemand.s bundle.
- * Returns [rowIndex, keyBytesIndices] matching twikit DEFAULT_ROW_INDEX
+ * Returns [rowIndex, keyBytesIndices] matching DEFAULT_ROW_INDEX
  * and DEFAULT_KEY_BYTES_INDICES.
  *
- * Uses updated twikit regex (post March 2026):
+ * Uses the updated regex added after the March 2026 bundle change:
  *   /\(\w{1}\[(\d{1,2})\],\s*16\)/g
  */
 function parseOndemandIndices(bundleText) {
@@ -330,7 +330,7 @@ function parseOndemandIndices(bundleText) {
 /**
  * Find the ondemand.s bundle URL from x.com HTML.
  * Implements the two-step chunk-ID -> hash lookup required after March 2026
- * (fixes twikit issues #408/#409).
+ * (fixes the March 2026 ondemand.s lookup breakage).
  *
  * Old format: 'ondemand.s': 'hashvalue'
  * New format: {chunkId: 'ondemand.s', ..., chunkId: 'hashvalue'}
@@ -402,7 +402,7 @@ function generateTransactionId(keyBytes, animationKey, method, path, nowMs, rand
 // =============================================================================
 
 /**
- * Full async pipeline matching twikit ClientTransaction class.
+ * Full async pipeline matching the Python ClientTransaction class.
  *
  * Usage:
  *   const ct = new ClientTransaction();
@@ -535,7 +535,7 @@ if (require.main === module) {
     if (!pass) console.log('  expected:', expected.map(x=>'0x'+x.toString(16).padStart(2,'0')));
   }
 
-  // -- Test 3: animation key computation (verified against Python twikit) -----
+  // -- Test 3: animation key computation (verified against Python implementation)
   console.log('\n=== Test 3: computeAnimationKey (live x.com data, Python-verified) ===');
   {
     const META = 'HxeAUy2o24jRiWwIOir8sbm6jDjgqAltY+GdyvDPYfr5fpEQHobA4HUciKJHWRrI';

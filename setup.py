@@ -27,11 +27,11 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     license='MIT',
+    author='inorilzy',
     url='https://github.com/inorilzy/xkit-py',
     project_urls={
         'Source': 'https://github.com/inorilzy/xkit-py',
         'Issues': 'https://github.com/inorilzy/xkit-py/issues',
-        'Upstream': 'https://github.com/d60/twikit',
     },
     packages=find_packages(),
     package_data={

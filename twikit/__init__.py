@@ -26,6 +26,8 @@ from .group import Group, GroupMessage
 from .list import List
 from .message import Message
 from .notification import Notification
+from .guest import GuestClient
+from .streaming import Topic
 from .trend import Trend
 from .tweet import CommunityNote, Poll, ScheduledTweet, Tweet
 from .user import User

@@ -2,7 +2,7 @@
 
 > 版本：v2.0（2025-07）  
 > 状态：已验证，含完整测试向量  
-> 对应实现：`x_tid_generator.js`（JS）、`twikit/x_client_transaction/transaction.py`（Python）
+> 对应实现：`contrib/js/x_tid_generator.js`（JS）、`twikit/x_client_transaction/transaction.py`（Python）
 
 ---
 
@@ -175,7 +175,7 @@ tid[52] = ((t >>> 24) & 0xFF) ^ K;
 
 ---
 
-### Bug 3：Python format-string 转义（twikit 特有）
+### Bug 3：Python format-string 转义
 
 **症状：** `re.search()` 永远返回 None，无法找到 hash  
 **诊断：**
@@ -268,9 +268,9 @@ print('pattern:', pattern)  # 检查展开是否正确
 
 | 文件 | 说明 |
 |---|---|
-| `D:/0-code-project/x_tid_generator.js` | 完整 JS 实现（含自测，`node x_tid_generator.js`） |
-| `D:/0-code-project/twikit/twikit/x_client_transaction/transaction.py` | Python 实现（inorilzy fork，已修复）|
-| `D:/0-code-project/X_TID_REVERSE_METHODOLOGY.md` | 旧版分析报告（含原始逆向过程，结构描述已过时）|
+| `contrib/js/x_tid_generator.js` | 完整 JS 实现（含自测，`node x_tid_generator.js`） |
+| `twikit/x_client_transaction/transaction.py` | Python 实现 |
+| `X_TID_SOP.md` | 当前维护说明 |
 
 ---
 

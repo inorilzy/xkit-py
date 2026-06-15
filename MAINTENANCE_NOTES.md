@@ -1,12 +1,11 @@
-# inorilzy/xkit-py — Upstream PR & Issue Triage
+# inorilzy/xkit-py — Maintenance Notes
 
-Fork base: `d60/twikit` v2.4.0
 Current project version: **v2.6.3** (prepared for PyPI as `xkit-py`)
 
-## Pull Requests Ported
+## Fixes Integrated
 
 ### ✅ Cherry-picked cleanly
-| Upstream PR | Description |
+| Change | Description |
 |---|---|
 | #334 | (small fix) |
 | #365 | (small fix) |
@@ -18,14 +17,14 @@ Current project version: **v2.6.3** (prepared for PyPI as `xkit-py`)
 | #418 / #419 | Defensive `.get()` for `User.__init__` + error response parsing |
 
 ### 🔧 Manually ported (conflicts resolved)
-| Upstream PR | Reason for conflict |
+| Change | Reason for manual integration |
 |---|---|
 | #284 — Non-interactive login (`input_for_login=False`) | Login signature already extended by `enable_ui_metrics` (PR #340) |
 | #367 — `Client.get_user_mentions(handle, search_count)` | Net-new method; inserted before `search_user` |
 | #383 — `User.notifications` field | User.__init__ already rewritten by PR #418 to defensive `.get()` |
 | #390 — `get_trends` rewritten for new `GenericTimelineById` GQL endpoint | Both legacy v11.guide path and new path are kept (forward/backward compat). Trend class accepts both snake_case and camelCase payloads. |
 
-### ⏭ Already covered (no port needed)
+### ⏭ Already covered
 - #341, #377, #405 — equivalent fixes already present after #418/#419 merges
 
 ### ❌ Skipped (stale / duplicates / docs / features beyond scope)
@@ -34,9 +33,9 @@ Current project version: **v2.6.3** (prepared for PyPI as `xkit-py`)
 - #324, #386, #398, #427 — docs / non-actionable
 - #407 — defensive fallbacks for `transaction.py`; our atomic-init rewrite already covers the failure modes
 
-## Issue Triage (132 open upstream issues)
+## Issue Triage
 
-### ✅ Already fixed in this fork
+### ✅ Already fixed in this project
 | Issue | How it's fixed |
 |---|---|
 | #417 — `KeyError` in `User.__init__` / `Client.request` | PR #418 (cherry-picked) |
