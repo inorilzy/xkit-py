@@ -1,7 +1,7 @@
 # inorilzy/xkit-py — Upstream PR & Issue Triage
 
 Fork base: `d60/twikit` v2.4.0
-Current project version: **v2.6.2** (prepared for PyPI as `xkit-py`)
+Current project version: **v2.6.3** (prepared for PyPI as `xkit-py`)
 
 ## Pull Requests Ported
 
