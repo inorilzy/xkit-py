@@ -10,7 +10,7 @@ with open('./twikit/__init__.py') as f:
 
 
 setup(
-    name='xkit',
+    name='xkit-py',
     version=version,
     install_requires=[
         'httpx[socks]',

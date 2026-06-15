@@ -10,7 +10,7 @@
 
 ![Number of GitHub stars](https://img.shields.io/github/stars/inorilzy/xkit-py)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/inorilzy/xkit-py)
-![Version](https://img.shields.io/pypi/v/xkit?label=PyPI)
+![Version](https://img.shields.io/pypi/v/xkit-py?label=PyPI)
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Use%20%22XKit%20for%20Python%22%2C%20a%20maintained%20Twitter%2FX%20web%20API%20client%20for%20Python!%20%23python%20%23twitter%20%23xkit&url=https%3A%2F%2Fgithub.com%2Finorilzy%2Fxkit-py)
 [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/nCrByrr8cX)
 
@@ -58,7 +58,7 @@
 
 ```bash
 
-pip install xkit
+pip install xkit-py
 
 ```
 

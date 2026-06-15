@@ -2,7 +2,7 @@
 
 ![GitHub stars](https://img.shields.io/github/stars/inorilzy/xkit-py)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/inorilzy/xkit-py)
-![PyPI version](https://img.shields.io/pypi/v/xkit?label=PyPI)
+![PyPI version](https://img.shields.io/pypi/v/xkit-py?label=PyPI)
 ![License](https://img.shields.io/github/license/inorilzy/xkit-py)
 
 XKit for Python is a maintained Twitter/X web API client. It supports common Twitter/X actions such as login, posting, searching, timelines, trends, DMs, and media handling without an official developer API key.
@@ -23,7 +23,7 @@ Recent maintenance work includes:
 ## Installation
 
 ```bash
-pip install xkit
+pip install xkit-py
 ```
 
 Use the `xkit` import path for new code:
