@@ -1,23 +1,23 @@
 > [!IMPORTANT]
-> X-Kit は上流の Twikit プロジェクトから派生し、現在は独立したプロジェクトとして保守されています。
+> XKit for Python は上流の Twikit プロジェクトから派生し、現在は独立したプロジェクトとして保守されています。
 > Upstream: https://github.com/d60/twikit
-> Current project: https://github.com/inorilzy/x-kit
-> X の bundle 形式変更対応など、継続的な修正を利用したい場合は X-Kit を使用してください。
+> Current project: https://github.com/inorilzy/xkit-py
+> X の bundle 形式変更対応など、継続的な修正を利用したい場合は XKit for Python を使用してください。
 
 <img src="https://i.imgur.com/iJe6rsZ.png"  width="500">
 
 
 
-![Number of GitHub stars](https://img.shields.io/github/stars/inorilzy/x-kit)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/inorilzy/x-kit)
+![Number of GitHub stars](https://img.shields.io/github/stars/inorilzy/xkit-py)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/inorilzy/xkit-py)
 ![Version](https://img.shields.io/pypi/v/xkit?label=PyPI)
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Use%20%22X-Kit%22%2C%20a%20maintained%20Twitter%2FX%20web%20API%20client%20for%20Python!%20%23python%20%23twitter%20%23xkit&url=https%3A%2F%2Fgithub.com%2Finorilzy%2Fx-kit)
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Use%20%22XKit%20for%20Python%22%2C%20a%20maintained%20Twitter%2FX%20web%20API%20client%20for%20Python!%20%23python%20%23twitter%20%23xkit&url=https%3A%2F%2Fgithub.com%2Finorilzy%2Fxkit-py)
 [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/nCrByrr8cX)
 
-[[English](https://github.com/inorilzy/x-kit/blob/main/README.md)]
-[[中文](https://github.com/inorilzy/x-kit/blob/main/README-zh.md)]
+[[English](https://github.com/inorilzy/xkit-py/blob/main/README.md)]
+[[中文](https://github.com/inorilzy/xkit-py/blob/main/README-zh.md)]
 
-# X-Kit <img height="35"  src="https://i.imgur.com/9HSdIl4.png"  valign="bottom">
+# XKit for Python <img height="35"  src="https://i.imgur.com/9HSdIl4.png"  valign="bottom">
 
 このライブラリを使用することで、APIキーなしで、ツイートの投稿や検索などの機能を使用することができます。
 
@@ -140,4 +140,4 @@ for tweet in tweets:
 await client.get_trends('trending')
 ```
 
-[examples](https://github.com/inorilzy/x-kit/tree/main/examples)<br>
+[examples](https://github.com/inorilzy/xkit-py/tree/main/examples)<br>

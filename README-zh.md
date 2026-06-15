@@ -1,23 +1,23 @@
 > [!IMPORTANT]
-> X-Kit 源自上游 Twikit 项目，现在作为独立项目维护。
+> XKit for Python 源自上游 Twikit 项目，现在作为独立项目维护。
 > 上游仓库：https://github.com/d60/twikit
-> 当前项目：https://github.com/inorilzy/x-kit
-> 如果你希望使用包含最新修复（例如 X bundle 格式变更修复）的版本，请优先使用 X-Kit。
+> 当前项目：https://github.com/inorilzy/xkit-py
+> 如果你希望使用包含最新修复（例如 X bundle 格式变更修复）的版本，请优先使用 XKit for Python。
 
 <img src="https://i.imgur.com/iJe6rsZ.png"  width="500">
 
 
 
-![Number of GitHub stars](https://img.shields.io/github/stars/inorilzy/x-kit)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/inorilzy/x-kit)
+![Number of GitHub stars](https://img.shields.io/github/stars/inorilzy/xkit-py)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/inorilzy/xkit-py)
 ![Version](https://img.shields.io/pypi/v/xkit?label=PyPI)
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Use%20%22X-Kit%22%2C%20a%20maintained%20Twitter%2FX%20web%20API%20client%20for%20Python!%20%23python%20%23twitter%20%23xkit&url=https%3A%2F%2Fgithub.com%2Finorilzy%2Fx-kit)
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Use%20%22XKit%20for%20Python%22%2C%20a%20maintained%20Twitter%2FX%20web%20API%20client%20for%20Python!%20%23python%20%23twitter%20%23xkit&url=https%3A%2F%2Fgithub.com%2Finorilzy%2Fxkit-py)
 [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/nCrByrr8cX)
 
-[[English](https://github.com/inorilzy/x-kit/blob/main/README.md)]
-[[日本語](https://github.com/inorilzy/x-kit/blob/main/README-ja.md)]
+[[English](https://github.com/inorilzy/xkit-py/blob/main/README.md)]
+[[日本語](https://github.com/inorilzy/xkit-py/blob/main/README-ja.md)]
 
-# X-Kit <img height="35"  src="https://i.imgur.com/9HSdIl4.png"  valign="bottom">
+# XKit for Python <img height="35"  src="https://i.imgur.com/9HSdIl4.png"  valign="bottom">
 
 一个简单的爬取 Twitter API 的客户端。
 
@@ -141,4 +141,4 @@ for tweet in tweets:
 await client.get_trends('trending')
 ```
 
-[更多样例...](https://github.com/inorilzy/x-kit/tree/main/examples)<br>
+[更多样例...](https://github.com/inorilzy/xkit-py/tree/main/examples)<br>

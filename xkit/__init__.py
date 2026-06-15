@@ -1,5 +1,5 @@
 """
-X-Kit public import path.
+XKit for Python public import path.
 
 The implementation still lives in the legacy-compatible ``twikit`` package.
 """

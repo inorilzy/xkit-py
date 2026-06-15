@@ -23,14 +23,14 @@ setup(
         'Js2Py-3.13'
     ],
     python_requires='>=3.8',
-    description='X-Kit: a maintained Twitter/X web API client for Python with no API key required.',
+    description='XKit for Python: a maintained Twitter/X web API client with no API key required.',
     long_description=long_description,
     long_description_content_type='text/markdown',
     license='MIT',
-    url='https://github.com/inorilzy/x-kit',
+    url='https://github.com/inorilzy/xkit-py',
     project_urls={
-        'Source': 'https://github.com/inorilzy/x-kit',
-        'Issues': 'https://github.com/inorilzy/x-kit/issues',
+        'Source': 'https://github.com/inorilzy/xkit-py',
+        'Issues': 'https://github.com/inorilzy/xkit-py/issues',
         'Upstream': 'https://github.com/d60/twikit',
     },
     packages=find_packages(),

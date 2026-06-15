@@ -1,15 +1,15 @@
-# X-Kit
+# XKit for Python
 
-![GitHub stars](https://img.shields.io/github/stars/inorilzy/x-kit)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/inorilzy/x-kit)
+![GitHub stars](https://img.shields.io/github/stars/inorilzy/xkit-py)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/inorilzy/xkit-py)
 ![PyPI version](https://img.shields.io/pypi/v/xkit?label=PyPI)
-![License](https://img.shields.io/github/license/inorilzy/x-kit)
+![License](https://img.shields.io/github/license/inorilzy/xkit-py)
 
-X-Kit is a maintained Twitter/X web API client for Python. It supports common Twitter/X actions such as login, posting, searching, timelines, trends, DMs, and media handling without an official developer API key.
+XKit for Python is a maintained Twitter/X web API client. It supports common Twitter/X actions such as login, posting, searching, timelines, trends, DMs, and media handling without an official developer API key.
 
-## Why X-Kit
+## Why XKit
 
-Twitter/X keeps changing its web API, GraphQL query IDs, bundle formats, transaction ID logic, and response shapes. X-Kit focuses on keeping these workflows usable with active fixes for current Twitter/X behavior.
+Twitter/X keeps changing its web API, GraphQL query IDs, bundle formats, transaction ID logic, and response shapes. XKit focuses on keeping these workflows usable with active fixes for current Twitter/X behavior.
 
 Recent maintenance work includes:
 
@@ -70,7 +70,7 @@ asyncio.run(main())
 Create a tweet:
 
 ```python
-await client.create_tweet(text="Hello from X-Kit")
+await client.create_tweet(text="Hello from XKit")
 ```
 
 Create a tweet with media:
@@ -108,11 +108,11 @@ Get trends:
 await client.get_trends("trending")
 ```
 
-More examples are available in [examples](https://github.com/inorilzy/x-kit/tree/main/examples).
+More examples are available in [examples](https://github.com/inorilzy/xkit-py/tree/main/examples).
 
 ## Compatibility
 
-X-Kit currently keeps the original `twikit` package as the implementation package and exposes `xkit` as the new public import path. This keeps old code working while giving new projects a clean package name.
+XKit currently keeps the original `twikit` package as the implementation package and exposes `xkit` as the new public import path. This keeps old code working while giving new projects a clean package name.
 
 Recommended for new code:
 
@@ -130,7 +130,7 @@ from twikit import Client
 
 This library uses Twitter/X web endpoints. Sending too many requests, automating suspicious actions, or using poor account hygiene may trigger rate limits, verification challenges, temporary locks, or account suspension.
 
-Read [ToProtectYourAccount.md](https://github.com/inorilzy/x-kit/blob/main/ToProtectYourAccount.md) before using automation-heavy workflows.
+Read [ToProtectYourAccount.md](https://github.com/inorilzy/xkit-py/blob/main/ToProtectYourAccount.md) before using automation-heavy workflows.
 
 ## Documentation
 
@@ -138,17 +138,17 @@ The upstream API documentation is still useful for the inherited API surface:
 
 - [Upstream Twikit documentation](https://twikit.readthedocs.io/en/latest/twikit.html)
 
-X-Kit-specific maintenance notes:
+XKit-specific maintenance notes:
 
-- [MAINTENANCE_NOTES.md](https://github.com/inorilzy/x-kit/blob/main/MAINTENANCE_NOTES.md)
-- [X_TID_SOP.md](https://github.com/inorilzy/x-kit/blob/main/X_TID_SOP.md)
+- [MAINTENANCE_NOTES.md](https://github.com/inorilzy/xkit-py/blob/main/MAINTENANCE_NOTES.md)
+- [X_TID_SOP.md](https://github.com/inorilzy/xkit-py/blob/main/X_TID_SOP.md)
 
 ## Credits and License
 
-X-Kit is derived from [d60/twikit](https://github.com/d60/twikit), originally licensed under the MIT License.
+XKit for Python is derived from [d60/twikit](https://github.com/d60/twikit), originally licensed under the MIT License.
 
-The original copyright notice and MIT License are preserved in [LICENSE](https://github.com/inorilzy/x-kit/blob/main/LICENSE).
+The original copyright notice and MIT License are preserved in [LICENSE](https://github.com/inorilzy/xkit-py/blob/main/LICENSE).
 
 ## Contributing
 
-Bug reports and fixes are welcome in [issues](https://github.com/inorilzy/x-kit/issues).
+Bug reports and fixes are welcome in [issues](https://github.com/inorilzy/xkit-py/issues).

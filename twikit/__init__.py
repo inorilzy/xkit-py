@@ -1,13 +1,13 @@
 """
 ==========================
-X-Kit Twitter/X API Client
-==========================
+XKit for Python
+===============
 
-https://github.com/inorilzy/x-kit
+https://github.com/inorilzy/xkit-py
 A Python library for interacting with the Twitter API.
 """
 
-__version__ = '2.6.0'
+__version__ = '2.6.1'
 
 import asyncio
 import os
