@@ -5,13 +5,11 @@
 ![PyPI version](https://img.shields.io/pypi/v/xkit?label=PyPI)
 ![License](https://img.shields.io/github/license/inorilzy/x-kit)
 
-X-Kit is a maintained Twitter/X web API client for Python. It lets you use common Twitter/X actions such as login, posting, searching, timelines, trends, DMs, and media handling without an official developer API key.
-
-This project is derived from [d60/twikit](https://github.com/d60/twikit) under the MIT License and is now maintained as an independent project at [inorilzy/x-kit](https://github.com/inorilzy/x-kit).
+X-Kit is a maintained Twitter/X web API client for Python. It supports common Twitter/X actions such as login, posting, searching, timelines, trends, DMs, and media handling without an official developer API key.
 
 ## Why X-Kit
 
-The original Twikit project has slowed down, while Twitter/X keeps changing its web API, GraphQL query IDs, bundle formats, transaction ID logic, and response shapes. X-Kit keeps the useful Twikit API surface while carrying active fixes for current Twitter/X behavior.
+Twitter/X keeps changing its web API, GraphQL query IDs, bundle formats, transaction ID logic, and response shapes. X-Kit focuses on keeping these workflows usable with active fixes for current Twitter/X behavior.
 
 Recent maintenance work includes:
 
