@@ -5,40 +5,44 @@
 ![PyPI version](https://img.shields.io/pypi/v/xkit-py?label=PyPI)
 ![License](https://img.shields.io/github/license/inorilzy/xkit-py)
 
-XKit for Python is a maintained Twitter/X web API client. It supports common Twitter/X actions such as login, posting, searching, timelines, trends, DMs, and media handling without an official developer API key.
+XKit for Python 是一个持续维护的 Twitter/X Web API Python 客户端。
 
-## Why XKit
+它可以在没有官方 Developer API Key 的情况下，使用常见的 Twitter/X Web 功能，例如登录、搜索、读取推文正文、时间线、趋势、私信和媒体处理。
 
-Twitter/X keeps changing its web API, GraphQL query IDs, bundle formats, transaction ID logic, and response shapes. XKit focuses on keeping these workflows usable with active fixes for current Twitter/X behavior.
+## 为什么维护这个项目
 
-Recent maintenance work includes:
+Twitter/X 的 Web API、GraphQL query ID、前端 bundle 格式、transaction ID 逻辑和返回结构经常变化。XKit for Python 的目标是把这些常用流程继续维护到可用状态。
 
-- Updated `ondemand.s` webpack bundle lookup for current X bundle formats.
-- Refreshed SearchTimeline query ID, variables, and feature flags.
-- Defensive parsing for changed user, tweet, trend, and cursor payloads.
-- Rate-limit recursion guard for safer `429` handling.
-- Castle Token support for login and onboarding flows.
-- A JavaScript reference implementation for X client transaction ID generation.
+近期维护内容包括：
 
-## Installation
+- 更新当前 X bundle 格式下的 `ondemand.s` 查找逻辑。
+- 更新 SearchTimeline query ID、variables 和 feature flags。
+- 增强 user、tweet、trend、cursor 等返回结构的兼容解析。
+- 为 `429` 限流处理增加递归保护。
+- 支持登录和 onboarding 流程中的 Castle Token。
+- 增加 X client transaction ID 生成逻辑的 JavaScript 参考实现。
+
+## 安装
 
 ```bash
 pip install xkit-py
 ```
 
-Use the `xkit` import path for new code:
+新项目推荐使用 `xkit` import 路径：
 
 ```python
 from xkit import Client
 ```
 
-The upstream-compatible `twikit` import path is still available for existing code:
+为了兼容旧代码，`twikit` import 路径仍然可用：
 
 ```python
 from twikit import Client
 ```
 
-## Quick Start
+## 快速开始
+
+### 登录
 
 ```python
 import asyncio
@@ -48,7 +52,7 @@ USERNAME = "example_user"
 EMAIL = "email@example.com"
 PASSWORD = "password0000"
 
-client = Client("en-US")
+client = Client("zh-CN")
 
 async def main():
     await client.login(
@@ -58,97 +62,111 @@ async def main():
         cookies_file="cookies.json",
     )
 
-    tweets = await client.search_tweet("python", "Latest")
+asyncio.run(main())
+```
+
+`cookies_file` 会在登录成功后保存 cookie；下次文件存在时会优先加载 cookie，减少重复登录。
+
+### 搜索
+
+```python
+import asyncio
+from xkit import Client
+
+client = Client("zh-CN")
+
+async def main():
+    await client.login(
+        auth_info_1="example_user",
+        auth_info_2="email@example.com",
+        password="password0000",
+        cookies_file="cookies.json",
+    )
+
+    tweets = await client.search_tweet("python", "Latest", count=20)
+
     for tweet in tweets:
-        print(tweet.user.name, tweet.text, tweet.created_at)
+        print(tweet.id, tweet.user.name, tweet.full_text)
+
+    more_tweets = await tweets.next()
+    for tweet in more_tweets:
+        print(tweet.id, tweet.full_text)
 
 asyncio.run(main())
 ```
 
-## Common Tasks
+`search_tweet` 的第二个参数支持：
 
-Create a tweet:
+- `Top`
+- `Latest`
+- `Media`
 
-```python
-await client.create_tweet(text="Hello from XKit")
-```
-
-Create a tweet with media:
+### 获取正文
 
 ```python
-media_ids = [
-    await client.upload_media("media1.jpg"),
-    await client.upload_media("media2.jpg"),
-]
+import asyncio
+from xkit import Client
 
-await client.create_tweet(
-    text="Example tweet",
-    media_ids=media_ids,
-)
+client = Client("zh-CN")
+
+async def main():
+    await client.login(
+        auth_info_1="example_user",
+        auth_info_2="email@example.com",
+        password="password0000",
+        cookies_file="cookies.json",
+    )
+
+    tweet = await client.get_tweet_by_id("1234567890123456789")
+
+    print(tweet.id)
+    print(tweet.user.screen_name)
+    print(tweet.full_text)
+
+asyncio.run(main())
 ```
 
-Get user tweets:
+读取推文正文时，优先使用 `tweet.full_text`。它会兼容普通推文和长文内容；只需要普通字段时也可以使用 `tweet.text`。
 
-```python
-tweets = await client.get_user_tweets("123456", "Tweets")
+## 安全提醒
 
-for tweet in tweets:
-    print(tweet.text)
-```
+本项目使用 Twitter/X Web 端点。过高频率请求、异常自动化行为、账号环境不稳定等情况，都可能触发限流、验证、临时锁定或账号风险。
 
-Send a DM:
+自动化使用前建议阅读 [ToProtectYourAccount.md](https://github.com/inorilzy/xkit-py/blob/main/ToProtectYourAccount.md)。
 
-```python
-await client.send_dm("123456789", "Hello")
-```
+## 文档
 
-Get trends:
+继承的 API 表面仍可参考上游文档：
 
-```python
-await client.get_trends("trending")
-```
+- [Upstream Twikit documentation](https://twikit.readthedocs.io/en/latest/twikit.html)
 
-More examples are available in [examples](https://github.com/inorilzy/xkit-py/tree/main/examples).
+XKit for Python 维护说明：
 
-## Compatibility
+- [MAINTENANCE_NOTES.md](https://github.com/inorilzy/xkit-py/blob/main/MAINTENANCE_NOTES.md)
+- [X_TID_SOP.md](https://github.com/inorilzy/xkit-py/blob/main/X_TID_SOP.md)
 
-XKit currently keeps the original `twikit` package as the implementation package and exposes `xkit` as the new public import path. This keeps old code working while giving new projects a clean package name.
+## 兼容性
 
-Recommended for new code:
+当前项目仍保留原来的 `twikit` 实现包，并额外暴露新的 `xkit` 公开 import 路径。
+
+新代码推荐：
 
 ```python
 from xkit import Client
 ```
 
-Still supported for compatibility:
+旧代码仍可继续使用：
 
 ```python
 from twikit import Client
 ```
 
-## Safety
-
-This library uses Twitter/X web endpoints. Sending too many requests, automating suspicious actions, or using poor account hygiene may trigger rate limits, verification challenges, temporary locks, or account suspension.
-
-Read [ToProtectYourAccount.md](https://github.com/inorilzy/xkit-py/blob/main/ToProtectYourAccount.md) before using automation-heavy workflows.
-
-## Documentation
-
-The upstream API documentation is still useful for the inherited API surface:
-
-- [Upstream Twikit documentation](https://twikit.readthedocs.io/en/latest/twikit.html)
-
-XKit-specific maintenance notes:
-
-- [MAINTENANCE_NOTES.md](https://github.com/inorilzy/xkit-py/blob/main/MAINTENANCE_NOTES.md)
-- [X_TID_SOP.md](https://github.com/inorilzy/xkit-py/blob/main/X_TID_SOP.md)
-
 ## Credits and License
 
-XKit for Python is derived from [d60/twikit](https://github.com/d60/twikit), originally licensed under the MIT License.
+XKit for Python derived from [d60/twikit](https://github.com/d60/twikit), originally licensed under the MIT License.
 
 The original copyright notice and MIT License are preserved in [LICENSE](https://github.com/inorilzy/xkit-py/blob/main/LICENSE).
 
-## Contributing
+## 贡献
 
-Bug reports and fixes are welcome in [issues](https://github.com/inorilzy/xkit-py/issues).
+欢迎在 [issues](https://github.com/inorilzy/xkit-py/issues) 提交 bug report、兼容性问题和修复 PR。
