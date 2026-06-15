@@ -1,7 +1,7 @@
 import asyncio
 import os
 
-from twikit import Client
+from xkit import Client
 from twikit.streaming import Topic
 
 AUTH_INFO_1 = ''

@@ -1,23 +1,23 @@
 > [!IMPORTANT]
-> このリポジトリは上流プロジェクトのメンテナンス fork（maintained fork）です。
+> X-Kit は上流の Twikit プロジェクトから派生し、現在は独立したプロジェクトとして保守されています。
 > Upstream: https://github.com/d60/twikit
-> Maintained fork: https://github.com/inorilzy/twikit-ng
-> X の bundle 形式変更対応など、継続的な修正を利用したい場合はこの fork を使用してください。
+> Current project: https://github.com/inorilzy/x-kit
+> X の bundle 形式変更対応など、継続的な修正を利用したい場合は X-Kit を使用してください。
 
 <img src="https://i.imgur.com/iJe6rsZ.png"  width="500">
 
 
 
-![Number of GitHub stars](https://img.shields.io/github/stars/inorilzy/twikit-ng)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/inorilzy/twikit-ng)
-![Version](https://img.shields.io/pypi/v/twikit-ng?label=PyPI)
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Use%20%22Twikit-NG%22%2C%20a%20maintained%20Twikit%20fork%20for%20Twitter%2FX%20automation!%20%23python%20%23twitter%20%23twikit&url=https%3A%2F%2Fgithub.com%2Finorilzy%2Ftwikit-ng)
+![Number of GitHub stars](https://img.shields.io/github/stars/inorilzy/x-kit)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/inorilzy/x-kit)
+![Version](https://img.shields.io/pypi/v/xkit?label=PyPI)
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Use%20%22X-Kit%22%2C%20a%20maintained%20Twitter%2FX%20web%20API%20client%20for%20Python!%20%23python%20%23twitter%20%23xkit&url=https%3A%2F%2Fgithub.com%2Finorilzy%2Fx-kit)
 [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/nCrByrr8cX)
 
-[[English](https://github.com/inorilzy/twikit-ng/blob/main/README.md)]
-[[中文](https://github.com/inorilzy/twikit-ng/blob/main/README-zh.md)]
+[[English](https://github.com/inorilzy/x-kit/blob/main/README.md)]
+[[中文](https://github.com/inorilzy/x-kit/blob/main/README-zh.md)]
 
-# Twikit-NG <img height="35"  src="https://i.imgur.com/9HSdIl4.png"  valign="bottom">
+# X-Kit <img height="35"  src="https://i.imgur.com/9HSdIl4.png"  valign="bottom">
 
 このライブラリを使用することで、APIキーなしで、ツイートの投稿や検索などの機能を使用することができます。
 
@@ -56,16 +56,21 @@
 
 ```bash
 
-pip install twikit-ng
+pip install xkit
 
 ```
 
-配布パッケージ名は `twikit-ng` です。Python の import パスは上流互換のままです。
+配布パッケージ名は `xkit` です。新しいコードでは `xkit` import パスを使用してください。
+
+```python
+from xkit import Client
+```
+
+従来の上流互換 import パスも既存コード向けに利用できます。
 
 ```python
 from twikit import Client
 ```
-
 
 ## 使用例
 
@@ -73,7 +78,7 @@ from twikit import Client
 
 ```python
 import asyncio
-from twikit import Client
+from xkit import Client
 
 USERNAME = 'example_user'
 EMAIL = 'email@example.com'
@@ -135,4 +140,4 @@ for tweet in tweets:
 await client.get_trends('trending')
 ```
 
-[examples](https://github.com/inorilzy/twikit-ng/tree/main/examples)<br>
+[examples](https://github.com/inorilzy/x-kit/tree/main/examples)<br>

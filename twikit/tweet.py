@@ -48,7 +48,7 @@ class Tweet:
         The count of quotes for the tweet.
     media : list[:class:`.media.Photo` | :class:`.media.AnimatedGif` | :class:`.media.Video`]
         A list of media entities associated with the tweet.
-        https://github.com/inorilzy/twikit-ng/blob/main/examples/download_tweet_media.py
+        https://github.com/inorilzy/x-kit/blob/main/examples/download_tweet_media.py
     reply_count : :class:`int`
         The count of replies to the tweet.
     favorite_count : :class:`int`

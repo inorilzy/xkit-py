@@ -2,26 +2,26 @@
 > https://github.com/d60/twitter_login (under development)
 
 > [!IMPORTANT]
-> This repository is a maintained fork of the upstream project.
+> X-Kit is derived from the upstream Twikit project and is now maintained as an independent project.
 > Upstream: https://github.com/d60/twikit
-> Maintained fork: https://github.com/inorilzy/twikit-ng
-> If you are looking for actively maintained fixes (for example X bundle format changes), use this fork.
+> Current project: https://github.com/inorilzy/x-kit
+> If you are looking for actively maintained fixes (for example X bundle format changes), use X-Kit.
 
 <img src="https://i.imgur.com/iJe6rsZ.png"  width="500">
 
 
 
-![Number of GitHub stars](https://img.shields.io/github/stars/inorilzy/twikit-ng)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/inorilzy/twikit-ng)
-![Version](https://img.shields.io/pypi/v/twikit-ng?label=PyPI)
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Use%20%22Twikit-NG%22%2C%20a%20maintained%20Twikit%20fork%20for%20Twitter%2FX%20automation!%20%23python%20%23twitter%20%23twikit&url=https%3A%2F%2Fgithub.com%2Finorilzy%2Ftwikit-ng)
+![Number of GitHub stars](https://img.shields.io/github/stars/inorilzy/x-kit)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/inorilzy/x-kit)
+![Version](https://img.shields.io/pypi/v/xkit?label=PyPI)
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Use%20%22X-Kit%22%2C%20a%20maintained%20Twitter%2FX%20web%20API%20client%20for%20Python!%20%23python%20%23twitter%20%23xkit&url=https%3A%2F%2Fgithub.com%2Finorilzy%2Fx-kit)
 [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/nCrByrr8cX)
 
-[[日本語](https://github.com/inorilzy/twikit-ng/blob/main/README-ja.md)]
-[[中文](https://github.com/inorilzy/twikit-ng/blob/main/README-zh.md)]
+[[日本語](https://github.com/inorilzy/x-kit/blob/main/README-ja.md)]
+[[中文](https://github.com/inorilzy/x-kit/blob/main/README-zh.md)]
 
 
-# Twikit-NG <img height="35"  src="https://i.imgur.com/9HSdIl4.png"  valign="bottom">
+# X-Kit <img height="35"  src="https://i.imgur.com/9HSdIl4.png"  valign="bottom">
 
 A Simple Twitter API Scraper
 
@@ -68,16 +68,21 @@ By using Twikit, you can access functionalities such as the following:
 
 ```bash
 
-pip install twikit-ng
+pip install xkit
 
 ```
 
-The distribution name is `twikit-ng`; the Python import path remains compatible with upstream:
+The distribution name is `xkit`; use the `xkit` import path for new code:
+
+```python
+from xkit import Client
+```
+
+The legacy upstream-compatible import path is still available for existing code:
 
 ```python
 from twikit import Client
 ```
-
 
 
 ## Quick Example
@@ -86,7 +91,7 @@ from twikit import Client
 
 ```python
 import asyncio
-from twikit import Client
+from xkit import Client
 
 USERNAME = 'example_user'
 EMAIL = 'email@example.com'
@@ -153,11 +158,11 @@ await client.send_dm('123456789', 'Hello')
 await client.get_trends('trending')
 ```
 
-More Examples: [examples](https://github.com/inorilzy/twikit-ng/tree/main/examples) <br>
+More Examples: [examples](https://github.com/inorilzy/x-kit/tree/main/examples) <br>
 
 ## Contributing
 
-If you encounter any bugs or issues with this maintained fork, please report them on [issues](https://github.com/inorilzy/twikit-ng/issues).
+If you encounter any bugs or issues with X-Kit, please report them on [issues](https://github.com/inorilzy/x-kit/issues).
 
 
 If you find this library useful, consider starring this repository⭐️

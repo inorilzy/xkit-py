@@ -2,7 +2,7 @@
 Since this library uses an unofficial API, your account may be banned if you use it incorrectly. Therefore, please be sure to follow the measures below.
 
 ## Avoid sending too many requests
-Sending too many requests may be perceived as suspicious behavior. Therefore, please avoid sending consecutive requests and allow time for a cooldown. Specifically, you should not send so many requests that you get stuck in a [rate limit](https://github.com/inorilzy/twikit-ng/blob/main/ratelimits.md).
+Sending too many requests may be perceived as suspicious behavior. Therefore, please avoid sending consecutive requests and allow time for a cooldown. Specifically, you should not send so many requests that you get stuck in a [rate limit](https://github.com/inorilzy/x-kit/blob/main/ratelimits.md).
 
 ## Reuse login information
 As mentioned earlier, sending many requests can be perceived as suspicious behavior, especially logins, which are closely monitored. Therefore, the act of repeatedly calling the `login` method should be avoided. To do so, it is useful to reuse the login information contained in cookies by using the `save_cookies` and `load_cookies` methods. The specific methods are shown below:

@@ -1,7 +1,7 @@
-# inorilzy/twikit-ng — Upstream PR & Issue Triage
+# inorilzy/x-kit — Upstream PR & Issue Triage
 
 Fork base: `d60/twikit` v2.4.0
-Current fork version: **v2.5.1** (published on PyPI as `twikit-ng`)
+Current project version: **v2.6.0** (prepared for PyPI as `xkit`)
 
 ## Pull Requests Ported
 
@@ -85,4 +85,4 @@ Current fork version: **v2.5.1** (published on PyPI as `twikit-ng`)
 
 ## Downstream
 
-`inorilzy/mcp-twikit` should depend on the maintained PyPI package `twikit-ng`.
+Downstream packages should depend on the maintained PyPI package `xkit`.

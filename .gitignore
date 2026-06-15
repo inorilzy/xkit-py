@@ -1,3 +1,7 @@
 *.json
 /*.py
 /node_modules
+/build/
+/dist/
+*.egg-info/
+__pycache__/

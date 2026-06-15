@@ -1,13 +1,13 @@
 """
 ==========================
-Twikit Twitter API Wrapper
+X-Kit Twitter/X API Client
 ==========================
 
-https://github.com/inorilzy/twikit-ng
+https://github.com/inorilzy/x-kit
 A Python library for interacting with the Twitter API.
 """
 
-__version__ = '2.5.1'
+__version__ = '2.6.0'
 
 import asyncio
 import os
