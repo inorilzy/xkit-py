@@ -9,6 +9,17 @@ XKit for Python 是一个持续维护的 Twitter/X Web API Python 客户端。
 
 它可以在没有官方 Developer API Key 的情况下，使用常见的 Twitter/X Web 功能，例如登录、搜索、读取推文正文、时间线、趋势、私信和媒体处理。
 
+## 适用场景
+
+- 需要在 Python 中调用 Twitter/X Web 端功能，但不想依赖付费官方 API。
+- 需要读取搜索结果、时间线、推文正文、长文、趋势、私信或媒体。
+- 需要在 MCP server、agent 工具或本地自动化脚本中复用 Twitter/X 登录态。
+
+不适合：
+
+- 需要官方 SLA、合规审计或稳定商业接口的生产系统。
+- 高频批量采集、绕过平台限制或违反 Twitter/X 条款的用途。
+
 ## 为什么维护这个项目
 
 Twitter/X 的 Web API、GraphQL query ID、前端 bundle 格式、transaction ID 逻辑和返回结构经常变化。XKit for Python 的目标是把这些常用流程继续维护到可用状态。
@@ -39,6 +50,21 @@ from xkit import Client
 ```python
 from twikit import Client
 ```
+
+## Authentication
+
+推荐把登录得到的 cookies 保存到本地文件，并在后续运行中复用：
+
+```python
+await client.login(
+    auth_info_1=USERNAME,
+    auth_info_2=EMAIL,
+    password=PASSWORD,
+    cookies_file="cookies.json",
+)
+```
+
+`cookies.json` 等价于账号凭据，不要提交到 Git，也不要贴到 issue、日志或聊天工具里。
 
 ## 快速开始
 
@@ -133,6 +159,20 @@ asyncio.run(main())
 本项目使用 Twitter/X Web 端点。过高频率请求、异常自动化行为、账号环境不稳定等情况，都可能触发限流、验证、临时锁定或账号风险。
 
 自动化使用前建议阅读 [ToProtectYourAccount.md](ToProtectYourAccount.md)。
+
+## Troubleshooting
+
+### 登录失败怎么办？
+
+先确认账号是否需要浏览器验证、二次验证或安全挑战。已有 `cookies.json` 时，可以删除后重新登录生成。
+
+### 搜索或时间线突然不可用怎么办？
+
+Twitter/X 会频繁调整 Web API、GraphQL query ID 和返回结构。请先升级到最新版本，再确认是否有相关 issue 或维护说明。
+
+### 为什么建议低频使用？
+
+这个库走的是 Web 端行为，不是官方 Developer API。高频请求更容易触发限流、验证或账号风控。
 
 ## 文档
 
